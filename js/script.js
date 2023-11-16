@@ -180,10 +180,18 @@ createApp({
         },
 
         sendMessage(activeChat) {
-            console.log('ok');
-            console.log(this.contacts[activeChat]);
-            this.contacts[activeChat].messages.push({...this.userMessage});
-            // this.userMessage.message = '';
+            // console.log('ok');
+            // console.log(this.contacts[activeChat]);
+            if (this.userMessage.message !== '') {
+
+                this.contacts[this.activeChat].messages.push({ ...this.userMessage });
+                setTimeout(() => this.receivedMessage(), 1000)
+                this.userMessage.message = '';
+            }
+        },
+
+        receivedMessage() {
+            this.contacts[this.activeChat].messages.push({ message: 'ok!', status: 'received' });
         }
     }
 }).mount('#app');
