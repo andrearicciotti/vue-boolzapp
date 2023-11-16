@@ -166,12 +166,24 @@ createApp({
                     ],
                 }
             ],
-            activeChat : 0,
+            activeChat: 0,
+            userMessage: {
+                message: '',
+                status: 'sent'
+            }
         }
     },
     methods: {
+
         chatSelection(index) {
             this.activeChat = index;
+        },
+
+        sendMessage(activeChat) {
+            console.log('ok');
+            console.log(this.contacts[activeChat]);
+            this.contacts[activeChat].messages.push({...this.userMessage});
+            // this.userMessage.message = '';
         }
     }
 }).mount('#app');
