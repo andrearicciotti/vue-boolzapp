@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tablet.css" media="screen and (max-width: 992px)">
     <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width: 541px)">
-    <link rel="stylesheet" href="css/dark.css" media="(prefers-color-scheme: dark)">
+    <!-- <link rel="stylesheet" href="css/dark.css" media="(prefers-color-scheme: dark)"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -109,269 +109,19 @@
 
                 <ul class="list">
 
-                    <li>
+                    <li v-for="(contact, index) in contacts">
 
-                        <button class="list-item avatar-card">
+                        <button class="list-item avatar-card" @click="chatSelection(index)">
 
                             <div class="avatar-img">
 
-                                <img src="img/avatar_1.jpg" alt="Michele">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
 
                             </div>
 
                             <div class="avatar-text">
 
-                                <span class="name"><strong>Michele</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_2.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Fabio</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_3.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Samuele</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_4.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Ferdinando</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_5.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Braccobaldo</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_6.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Guglielmina</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_7.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Jannik</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_8.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Sinner</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_io.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Rodolfa</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_3.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Giangiacometto</strong></span>
-
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
-
-                            </div>
-
-                            <div class="time">
-                                16:15
-                            </div>
-                        </button>
-
-                    </li>
-
-                    <li>
-
-                        <button class="list-item avatar-card">
-
-                            <div class="avatar-img">
-
-                                <img src="img/avatar_1.jpg" alt="Michele">
-
-                            </div>
-
-                            <div class="avatar-text">
-
-                                <span class="name"><strong>Brazorf</strong></span>
+                                <span class="name"><strong>{{ contact.name }}</strong></span>
 
                                 <span class="last-access">Ultimo accesso oggi alle 16:26</span>
 
@@ -393,7 +143,7 @@
         <!-- /sidebar -->
 
         <!-- chat's window -->
-        <div class="chat-col">
+        <div class="chat-col" v-for="(contact, index) in contacts" :class="{'chat-hidden': index !== activeChat}">
 
             <!-- header chat-->
             <header class="header">
@@ -402,13 +152,13 @@
 
                     <div class="avatar-img">
 
-                        <img src="img/avatar_1.jpg" alt="Michele">
+                        <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
 
                     </div>
 
                     <div class="avatar-text">
 
-                        <span class="name"><strong>Michele</strong></span>
+                        <span class="name"><strong>{{ contact.name }}</strong></span>
 
                         <span class="last-access">Ultimo accesso oggi alle 16:26</span>
 
@@ -438,79 +188,12 @@
             <!-- chat -->
             <main class="chat">
 
-                <div class="chat-container">
+                <div class="chat-container" v-for="(message, index) in contacts[activeChat].messages">
 
-                    <div class="msg chat-send">
+                    <div class="msg"
+                        :class="{'chat-send': message.status === 'sent', 'chat-receive': message.status === 'received'}">
 
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur asperiores atque,
-                            adipisci qui aut laudantium magni repellat sit debitis maxime officiis facere incidunt nam
-                            autem
-                            obcaecati corporis nostrum hic ducimus!</p>
-
-                        <i class="fa-solid fa-angle-down"></i>
-
-                        <div class="hidden-options">
-                            <button>Info Messaggio</button>
-                            <button>Cancella Messaggio</button>
-                        </div>
-
-                    </div>
-
-                    <div class="msg chat-receive">
-
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur asperiores atque,
-                            adipisci qui aut laudantium magni repellat sit debitis maxime officiis facere incidunt nam
-                            autem
-                            obcaecati corporis nostrum hic ducimus!</p>
-
-                        <i class="fa-solid fa-angle-down"></i>
-
-                        <div class="hidden-options">
-                            <button>Info Messaggio</button>
-                            <button>Cancella Messaggio</button>
-                        </div>
-
-
-                    </div>
-
-                    <div class="msg chat-receive">
-
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur asperiores atque,
-                            adipisci qui aut laudantium magni repellat sit debitis maxime officiis facere incidunt nam
-                            autem
-                            obcaecati corporis nostrum hic ducimus!</p>
-
-                        <i class="fa-solid fa-angle-down"></i>
-
-                        <div class="hidden-options">
-                            <button>Info Messaggio</button>
-                            <button>Cancella Messaggio</button>
-                        </div>
-
-                    </div>
-
-                    <div class="msg chat-send">
-
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur asperiores atque,
-                            adipisci qui aut laudantium magni repellat sit debitis maxime officiis facere incidunt nam
-                            autem
-                            obcaecati corporis nostrum hic ducimus!</p>
-
-                        <i class="fa-solid fa-angle-down"></i>
-
-                        <div class="hidden-options">
-                            <button>Info Messaggio</button>
-                            <button>Cancella Messaggio</button>
-                        </div>
-
-                    </div>
-
-                    <div class="msg chat-send">
-
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur asperiores atque,
-                            adipisci qui aut laudantium magni repellat sit debitis maxime officiis facere incidunt nam
-                            autem
-                            obcaecati corporis nostrum hic ducimus!</p>
+                        <p>{{ message.message }}</p>
 
                         <i class="fa-solid fa-angle-down"></i>
 

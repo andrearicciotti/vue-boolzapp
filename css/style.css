@@ -51,7 +51,9 @@ body {
 .msg {
     border-radius: 10px;
     padding: .5rem;
-    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin: .2rem .3rem .2rem .3rem;
     min-width: 50%;
     max-width: 60%;
     position: relative;
@@ -59,7 +61,6 @@ body {
 
 .chat-send {
     background-color: var(--chat-send-col);
-    display: flex;
     align-self: flex-end;
 }
 
@@ -198,6 +199,11 @@ button {
 /* CHAT'S WINDOW */
 .chat-col .chat {
     height: calc(100% - 6rem);
+    overflow-y: scroll;
+}
+
+.chat-hidden {
+    display: none;
 }
 
 .fa-angle-down {
@@ -219,7 +225,7 @@ button {
 
 .hidden-options {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     right: 10px;
     text-align: -webkit-center;
     background-color: inherit;
@@ -252,7 +258,6 @@ button {
     padding: 2rem;
     max-height: 100%;
     margin: 0 auto;
-    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
