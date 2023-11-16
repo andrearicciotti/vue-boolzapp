@@ -1,0 +1,40 @@
+:root {
+    --body-bg-top: #429488;
+    --body-bg-bottom: #d9dbd5;
+    --header-col: #eaeaea;
+    --chat-send-col: #dcf8c0;
+    --chat-received-col: #ffffff;
+    --notifications-col: #9fd8f8;
+    --text-icons-col: #b1b1b1;
+    --footer-col: #f2eeea;
+}
+
+body {
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.side-col {
+    width: unset;
+}
+
+.chat-col {
+    flex-grow: 1;
+}
+
+.side-col .header .icons, .user-name {
+    display: none;
+}
+
+.list-chats .list .list-item .avatar-text, .time {
+    display: none;
+}
+
+
+.notifications, .find-chat {
+    display: none;
+}
