@@ -96,7 +96,8 @@
                     </div>
 
                     <div class="search-input">
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input v-model.trim="searchInput" @keyup="finder" type="text"
+                            placeholder="Cerca o inizia una nuova chat">
                     </div>
 
                 </div>
@@ -109,7 +110,7 @@
 
                 <ul class="list">
 
-                    <li v-for="(contact, index) in contacts">
+                    <li v-for="(contact, index) in contacts" :key="contact.avatar" :class="{'chat-hidden': contact.visible === false}">
 
                         <button class="list-item avatar-card" @click="chatSelection(index)">
 
@@ -143,7 +144,8 @@
         <!-- /sidebar -->
 
         <!-- chat's window -->
-        <div class="chat-col" v-for="(contact, index) in contacts" :class="{'chat-hidden': index !== activeChat}">
+        <div class="chat-col" v-for="(contact, index) in contacts" :key="contact.avatar"
+            :class="{'chat-hidden': index !== activeChat}">
 
             <!-- header chat-->
             <header class="header">
@@ -188,7 +190,8 @@
             <!-- chat -->
             <main class="chat">
 
-                <div class="chat-container" v-for="(message, index) in contacts[activeChat].messages">
+                <div class="chat-container" v-for="(message, index) in contacts[activeChat].messages"
+                    :key="message.date">
 
                     <div class="msg"
                         :class="{'chat-send': message.status === 'sent', 'chat-receive': message.status === 'received'}">
@@ -223,7 +226,8 @@
                 </div>
 
                 <div class="message-input">
-                    <input @keyup.enter="sendMessage(activeChat)" v-model.trim="userMessage.message" type="text" placeholder="Scrivi un messaggio">
+                    <input @keyup.enter="sendMessage(activeChat)" v-model.trim="userMessage.message" type="text"
+                        placeholder="Scrivi un messaggio">
                 </div>
 
                 <div class="side-footer">

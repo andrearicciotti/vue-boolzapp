@@ -170,7 +170,8 @@ createApp({
             userMessage: {
                 message: '',
                 status: 'sent'
-            }
+            },
+            searchInput: '',
         }
     },
     methods: {
@@ -192,6 +193,18 @@ createApp({
 
         receivedMessage() {
             this.contacts[this.activeChat].messages.push({ message: 'ok!', status: 'received' });
+        },
+
+        finder() {
+            this.contacts.forEach(contact => {
+                console.log(contact.name);
+                if(contact.name.includes(this.searchInput)) {
+                    console.log('ok');
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+            });
         }
     }
 }).mount('#app');
