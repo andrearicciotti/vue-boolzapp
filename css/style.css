@@ -203,7 +203,7 @@ button {
 }
 
 .chat-hidden {
-    display: none;
+    display: none !important;
 }
 
 .fa-angle-down {

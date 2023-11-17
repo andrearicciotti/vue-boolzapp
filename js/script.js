@@ -167,6 +167,7 @@ createApp({
                 }
             ],
             activeChat: 0,
+            activeMsg: 0,
             userMessage: {
                 message: '',
                 status: 'sent'
@@ -185,7 +186,7 @@ createApp({
             // console.log(this.contacts[activeChat]);
             if (this.userMessage.message !== '') {
 
-                this.contacts[this.activeChat].messages.push({ ...this.userMessage });
+                this.contacts[this.activeChat].messages.push({...this.userMessage});
                 setTimeout(() => this.receivedMessage(), 1000)
                 this.userMessage.message = '';
             }
@@ -199,12 +200,18 @@ createApp({
             this.contacts.forEach(contact => {
                 console.log(contact.name);
                 if(contact.name.includes(this.searchInput)) {
-                    console.log('ok');
+                    // console.log('ok');
                     contact.visible = true;
                 } else {
                     contact.visible = false;
                 }
             });
+        },
+
+        deleteMsg(index) {
+            this.activeMsg = index;
+            console.log(this.contacts[this.activeChat].messages[this.activeMsg].message);
+            this.contacts[this.activeChat].messages[this.activeMsg].status = 'deleted';
         }
     }
 }).mount('#app');

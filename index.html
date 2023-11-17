@@ -190,7 +190,7 @@
             <!-- chat -->
             <main class="chat">
 
-                <div class="chat-container" v-for="(message, index) in contacts[activeChat].messages"
+                <div class="chat-container" :class="{'chat-hidden': message.status === 'deleted'}" v-for="(message, index) in contacts[activeChat].messages"
                     :key="message.date">
 
                     <div class="msg"
@@ -202,7 +202,7 @@
 
                         <div class="hidden-options">
                             <button>Info Messaggio</button>
-                            <button>Cancella Messaggio</button>
+                            <button @click.stop="deleteMsg(index)">Cancella Messaggio</button>
                         </div>
 
                     </div>
