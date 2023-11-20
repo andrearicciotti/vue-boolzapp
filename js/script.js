@@ -1,5 +1,11 @@
 const { createApp } = Vue;
 
+const dt = luxon.DateTime;
+
+let dtFormat = dt.now().toLocaleString(dt.DATE_SHORT) + ` ` + dt.now().toLocaleString(dt.TIME_24_WITH_SECONDS);
+console.log(dtFormat); 
+console.log(dt.now().toLocaleString(dt.DATE_SHORT), dt.now().toLocaleString(dt.TIME_24_WITH_SECONDS));
+
 createApp({
     data() {
         return {
@@ -170,7 +176,8 @@ createApp({
             activeMsg: 0,
             userMessage: {
                 message: '',
-                status: 'sent'
+                status: 'sent',
+                date: ''
             },
             searchInput: '',
         }
@@ -186,20 +193,21 @@ createApp({
             // console.log(this.contacts[activeChat]);
             if (this.userMessage.message !== '') {
 
-                this.contacts[this.activeChat].messages.push({...this.userMessage});
-                setTimeout(() => this.receivedMessage(), 1000)
+                this.userMessage.date = this.actualDateTime(dt.now())
+                this.contacts[activeChat].messages.push({ ...this.userMessage });
+                setTimeout(() => this.receivedMessage(activeChat), 1000)
                 this.userMessage.message = '';
             }
         },
 
-        receivedMessage() {
-            this.contacts[this.activeChat].messages.push({ message: 'ok!', status: 'received' });
+        receivedMessage(activeChat) {
+            this.contacts[activeChat].messages.push({ message: 'ok!', status: 'received', date: this.actualDateTime(dt.now())});
         },
 
         finder() {
             this.contacts.forEach(contact => {
                 console.log(contact.name);
-                if(contact.name.includes(this.searchInput)) {
+                if (contact.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
                     // console.log('ok');
                     contact.visible = true;
                 } else {
@@ -212,6 +220,14 @@ createApp({
             this.activeMsg = index;
             console.log(this.contacts[this.activeChat].messages[this.activeMsg].message);
             this.contacts[this.activeChat].messages[this.activeMsg].status = 'deleted';
+        },
+
+        dateToHour(date) {
+            return dt.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+        },
+
+        actualDateTime(date) {
+            return date.toLocaleString(dt.DATE_SHORT) + ` ` + dt.now().toLocaleString(dt.TIME_24_WITH_SECONDS);
         }
     }
 }).mount('#app');

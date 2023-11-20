@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- vue js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
@@ -36,13 +34,13 @@
                 <div class="avatar-card user">
 
                     <div class="avatar-img">
-                        <img src="img/avatar_io.jpg" alt="">
+                        <img src="img/avatar_2.jpg" alt="">
                     </div>
 
                 </div>
 
                 <div class="user-name">
-                    <span @click="prova">Sofia</span>
+                    <span>User</span>
                 </div>
 
                 <div class="icons-container">
@@ -110,7 +108,8 @@
 
                 <ul class="list">
 
-                    <li v-for="(contact, index) in contacts" :key="contact.avatar" :class="{'chat-hidden': contact.visible === false}">
+                    <li v-for="(contact, index) in contacts" :key="contact.avatar"
+                        :class="{'chat-hidden': contact.visible === false}">
 
                         <button class="list-item avatar-card" @click="chatSelection(index)">
 
@@ -124,12 +123,12 @@
 
                                 <span class="name"><strong>{{ contact.name }}</strong></span>
 
-                                <span class="last-access">Ultimo accesso oggi alle 16:26</span>
+                                <span class="last-access">Ultimo accesso oggi alle {{ dateToHour(contact.messages[contact.messages.length - 1].date) }}</span>
 
                             </div>
 
                             <div class="time">
-                                16:15
+                                {{ dateToHour(contact.messages[contact.messages.length - 1].date) }}
                             </div>
                         </button>
 
@@ -144,8 +143,7 @@
         <!-- /sidebar -->
 
         <!-- chat's window -->
-        <div class="chat-col" v-for="(contact, index) in contacts" :key="contact.avatar"
-            :class="{'chat-hidden': index !== activeChat}">
+        <div class="chat-col">
 
             <!-- header chat-->
             <header class="header">
@@ -154,15 +152,15 @@
 
                     <div class="avatar-img">
 
-                        <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                        <img :src="`img/avatar${contacts[activeChat].avatar}.jpg`" :alt="contacts[activeChat].name">
 
                     </div>
 
                     <div class="avatar-text">
 
-                        <span class="name"><strong>{{ contact.name }}</strong></span>
+                        <span class="name"><strong>{{ contacts[activeChat].name }}</strong></span>
 
-                        <span class="last-access">Ultimo accesso oggi alle 16:26</span>
+                        <span class="last-access">Ultimo accesso alle {{ dateToHour(contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date) }}</span>
 
                     </div>
 
@@ -190,8 +188,8 @@
             <!-- chat -->
             <main class="chat">
 
-                <div class="chat-container" :class="{'chat-hidden': message.status === 'deleted'}" v-for="(message, index) in contacts[activeChat].messages"
-                    :key="message.date">
+                <div class="chat-container" :class="{'chat-hidden': message.status === 'deleted'}"
+                    v-for="(message, index) in contacts[activeChat].messages" :key="message.date">
 
                     <div class="msg"
                         :class="{'chat-send': message.status === 'sent', 'chat-receive': message.status === 'received'}">
@@ -204,6 +202,7 @@
                             <button>Info Messaggio</button>
                             <button @click.stop="deleteMsg(index)">Cancella Messaggio</button>
                         </div>
+                        <small class="hour-msg">{{ dateToHour(message.date) }}</small>
 
                     </div>
 
@@ -249,6 +248,12 @@
     </div>
     <!-- /web-app -->
 
+    <!-- luxon js -->
+    <script src="
+    https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js
+    "></script>
+    <!-- vue js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- custom js -->
     <script src="js/script.js"></script>
 </body>
